@@ -34,7 +34,7 @@ var deviceList =[];
  
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
-    bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
+    test.addEventListener('touchstart', conn, false); // assume not scrolling
 }
 
 function onDeviceReady(){
@@ -44,7 +44,7 @@ function onDeviceReady(){
 	 
 function refreshDeviceList(){
 	//deviceList =[];
-	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
+	document.getElementById("test").innerHTML = ''; // empties the list
 	if (cordova.platformId === 'android') { // Android filtering is broken
 		ble.scan([], 5, onDiscoverDevice, onError);
 	} else {
@@ -60,7 +60,7 @@ function onDiscoverDevice(device){
 		var listItem = document.createElement('li'),
 		html = device.name+ "," + device.id;
 		listItem.innerHTML = html;
-		document.getElementById("bleDeviceList").appendChild(listItem);
+		document.getElementById("test").appendChild(listItem);
 	
 }
 
