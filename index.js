@@ -68,28 +68,28 @@ function onDiscoverDevice(device){
 
 function conn(){
 	var  deviceTouch= event.srcElement.innerHTML;
-	document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
+	//document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
 	var deviceTouchArr = deviceTouch.split(",");
 	ConnDeviceId = deviceTouchArr[1];
-	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1]; //for debug:
+	//document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1]; //for debug:
 	ble.connect(ConnDeviceId, onConnect, onConnError);
  }
  
  //succes
 function onConnect(){
-	document.getElementById("statusDiv").innerHTML = " Status: Connected";
-	document.getElementById("bleId").innerHTML = ConnDeviceId;
+	/*document.getElementById("statusDiv").innerHTML = " Status: Connected";
+	document.getElementById("bleId").innerHTML = ConnDeviceId;*/
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 }
 
 //failure
 function onConnError(){
 	alert("Problem connecting");
-	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
+	//document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
 }
 
  function onData(data){ // data received from Arduino
-	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
+	//document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
 }
 
 function data(txt){
@@ -102,7 +102,7 @@ function sendData() { // send data to Arduino
 }
 	
 function onSend(){
-	document.getElementById("sendDiv").innerHTML = "Sent: " + messageInput.value + "<br/>";
+	//document.getElementById("sendDiv").innerHTML = "Sent: " + messageInput.value + "<br/>";
 }
 
 function disconnect() {
@@ -110,10 +110,10 @@ function disconnect() {
 }
 
 function onDisconnect(){
-	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
+	//document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
 }
 function onError(reason)  {
-	alert("ERROR: " + reason); // real apps should use notification.alert
+	//alert("ERROR: " + reason); // real apps should use notification.alert
 }
 
 	
