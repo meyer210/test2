@@ -56,11 +56,12 @@ function refreshDeviceList(){
 
 function onDiscoverDevice(device){
 	//Make a list in html and show devises
-	
+		if (device.name == "DVKTEST2"){
 		var listItem = document.createElement('li'),
 		html = device.name+ "," + device.id;
 		listItem.innerHTML = html;
 		document.getElementById("test").appendChild(listItem);
+		}
 	
 }
 
